@@ -1,1 +1,142 @@
-ass
+  <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>3D PRODUCT</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+</head>
+<body>
+
+<div class='bg'></div>
+
+<div class='main' id='all_part'>
+
+	<div class='big part' id='main_part'>
+		
+		<div class='light part'></div>
+		
+		<div class='inside part'>
+				<div class='back part'></div>
+		</div>
+	
+		<div class='toptop part'></div>
+		
+		<div class='side part'></div>
+		<div class='side part right'></div>
+		<div class='top part'></div>
+		<div class='top part right2'></div>
+		<div class='small part'>
+			<a class='gregs part' href='#'><div class='part'></div></a>
+			<div class='bottom part'></div>
+			<div class='bottom part right3'></div>
+			
+			<div class='cube part'></div>
+			<div class='cube part right4'></div>
+			
+			<div class='bar part decoration another'></div>
+			<div class='bar2 part decoration'></div>
+		</div>
+		
+		<div class='bar part decoration'></div>	
+		<div class='snow part decoration'></div>	
+		
+		<div class='door part' id='door_part'>
+			<div class='insideback part'></div>
+			
+			<div class='content_door'>
+			
+			<ul>
+				<li><a href='#'>Главная</a></li>
+				<li><a href='#'>Продукты</a></li>
+				<li><a href='#'>Доставка</a></li>
+				<li><a href='#'>О нас</a></li>
+			</ul>
+			
+			
+			</div>
+			
+			<div class='insidebackTB part'></div>
+		
+			<div class='front part'>
+				<div class='side2 part'></div>
+				<div class='side2 part right5'></div>
+				<div class='top2 part'></div>
+				<div class='top2 part right6'></div>
+				
+				<div class='bar3 part'></div>
+			</div>
+			<div class='bar4 part'></div>
+			
+			<div class='handle part'  ><div class='part' ></div></div>
+			
+		</div>
+		
+	</div>
+
+</div>
+ 
+<div class='interface'>
+	<div class='button' onclick='open_the_door_pls();'></div>
+	<div class='button bd' onclick='show_menu();'></div>
+</div> 
+
+
+
+
+<script>
+
+var main_part=document.getElementById('main_part');
+var door_part=document.getElementById('door_part');
+var ass_part=document.getElementById('all_part');
+var main_part_angle=195;
+var main_part_rotatable=1;
+var menu_is_on=0;
+
+var audio_door = new Audio('sound/door.mp3');
+var audio_menu = new Audio('sound/menu.mp3');
+audio_door.volume=0.4;
+audio_menu.volume=0.2;
+
+
+function open_the_door_pls(){
+audio_door.play();
+	if(main_part_rotatable==1){
+		main_part_rotatable=0;
+		main_part.style.transform='rotateY(180deg)';
+		door_part.style.transition='1s';
+		door_part.style.transform='rotateY(110deg)';
+		all_part.style.transform='scale(0.5)';
+		main_part.style.left='calc( 50% - 300px )';
+		
+	}else{
+		main_part_rotatable=1;
+		menu_is_on=0;
+		door_part.style.transform='rotateY(0deg)';
+		main_part.style.transform='rotateY(200deg)';
+		all_part.style.transform='scale(0.3)';
+		main_part.style.left='calc( 50% - 250px )';
+	}
+}
+
+function show_menu(){
+audio_menu.play();
+	if(main_part_rotatable==1){
+		open_the_door_pls();
+	}
+
+	if(menu_is_on==0){
+		main_part.style.transform='rotateY(250deg) translateZ(550px)';
+		menu_is_on=1;
+	}else{
+		main_part.style.transform='rotateY(180deg)';
+		menu_is_on=0;
+	}
+}
+
+
+</script>
+
+</body>
+</html>
